@@ -22,17 +22,20 @@ namespace MailSend.Controllers
             mimeMessage.From.Add(mailboxAddressFrom); // mailin kimden geldiği
 
             // mail gönderilecek kişinin adı, gönderilecek kişinin mail adresi
-            MailboxAddress mailboxAddressTo = new("User", "talha.satir0729@gmail.com");
-            mimeMessage.To.Add(mailboxAddressTo);
+            //MailboxAddress mailboxAddressTo = new("User", "talha.satir0729@gmail.com");
+            //mimeMessage.To.Add(mailboxAddressTo);
+            mimeMessage.To.Add(new MailboxAddress("User", "talha.satir0729@gmail.com"));
+            mimeMessage.To.Add(new MailboxAddress("User", "imnever0729@gmail.com"));
 
+            //mail başlık
+            mimeMessage.Subject = "test mail";//mailRequest.Subject;
 
             BodyBuilder bodyBuilder = new();
             //bodyBuilder.TextBody = "Test Body";
             bodyBuilder.HtmlBody = "<strong>Test Body</strong>";
             mimeMessage.Body = bodyBuilder.ToMessageBody();
 
-            mimeMessage.Subject = "test mail";//mailRequest.Subject;
-
+            //SmtpClient = using MailKit.Net.Smtp; 
             SmtpClient client = new();
             client.Connect("smtp.gmail.com", 587, false);
             // ussbtzdrlkuxburt => google üzerinden aldık 2 aşamalı doğrulamayı açıp altında bişey vardı tıklayınca geliyor. videoda var. => tıklşama şeyi biraz daha aşşagıda veya şifrelerin içinde.
