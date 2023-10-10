@@ -39,7 +39,7 @@ namespace MailSend.Controllers
             SmtpClient client = new();
             client.Connect("smtp.gmail.com", 587, false);
             // ussbtzdrlkuxburt => google üzerinden aldık 2 aşamalı doğrulamayı açıp altında bişey vardı tıklayınca geliyor. videoda var. => tıklşama şeyi biraz daha aşşagıda veya şifrelerin içinde.
-            client.Authenticate("talha.0729@gmail.com", "ussbtzdrlkuxburt"); // kendi şifremizi kabul etmiyor.
+            client.Authenticate("talha.0729@gmail.com", ""); // kendi şifremizi kabul etmiyor.
             client.Send(mimeMessage);
             client.Disconnect(true);
 
